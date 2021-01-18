@@ -15,8 +15,10 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
-      redirect_to companies_path, notice: "Saved"
+      flash[:success] = "Company #{@company.name} is created."
+      redirect_to companies_path
     else
+      flash[:error] = @company.errors.full_messages.join(", ")
       render :new
     end
   end
@@ -26,11 +28,25 @@ class CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
-      redirect_to companies_path, notice: "Changes Saved"
+      flash[:success] = "Company #{@company.name} is updated."
+      redirect_to companies_path
     else
+      flash[:error] = @company.errors.full_messages.join(", ")
       render :edit
     end
   end  
+
+  def destroy
+    name = @company.name
+    if @company.destroy
+      flash[:success] = "#{name} is deleted successfully."
+      redirect_to companies_path
+    else
+      flash[:error] = @company.errors.full_messages.join(", ")
+      render :show
+    end
+  end
+
 
   private
 
@@ -43,6 +59,7 @@ class CompaniesController < ApplicationController
       :phone,
       :email,
       :owner_id,
+      :color,
       services: []
     )
   end
@@ -50,5 +67,5 @@ class CompaniesController < ApplicationController
   def set_company
     @company = Company.find(params[:id])
   end
-  
+
 end

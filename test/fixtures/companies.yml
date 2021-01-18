@@ -38,4 +38,12 @@ brown_painting:
   email: "brown_painting@brown_painting.com"
   zip_code:
   phone: "555-808-8888"
-  services: "{Interior Painting}"   
+  services: "{Interior Painting}"  
+
+test_company:
+  name: Test Company
+  email: "hometown_painting@getmainstreet.com"
+  zip_code: "93003"
+  phone: "555-808-8888"
+  services: "{Interior Painting, Commercial Painting}"
+

@@ -50,7 +50,18 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'minitest-reporters'
+  gem 'rspec-rails', '~> 4.0.2'
+  gem 'shoulda-matchers', '~> 4.0'
+  gem "factory_bot_rails"
+  gem 'faker', git: 'https://github.com/stympy/faker.git'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
+
+gem "capistrano", "~> 3.14", require: false
+
+
